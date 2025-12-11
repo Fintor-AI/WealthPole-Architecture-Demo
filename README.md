@@ -36,24 +36,27 @@ strong enough to build real bots, lightweight enough to extend freely.
 ## 📂 Current Folder Structure
 
 fintorai-python-trading-bot-starter/
- ├── config/
- │    └── settings_example.yaml
- ├── src/
- │    ├── main.py
- │    ├── core/
- │    │    ├── __init__.py
- │    │    └── engine.py
- │    ├── strategies/
- │    │    ├── __init__.py
- │    │    └── sample_trend.py
- │    ├── exchanges/
- │    │    └── __init__.py
- │    └── utils/
- │         ├── __init__.py
- │         └── logger.py
- ├── requirements.txt
- ├── LICENSE
- └── README.md
+  config/
+    settings_example.yaml
+  src/
+    main.py
+    core/
+      __init__.py
+      engine.py
+    strategies/
+      __init__.py
+      sample_trend.py
+    exchanges/
+      __init__.py
+    utils/
+      __init__.py
+      logger.py
+  requirements.txt
+  LICENSE
+  README.md
+
+
+
 
 ---
 
