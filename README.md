@@ -1,110 +1,129 @@
-# FintorAI Python Trading Bot Starter
+# WealthPole Architecture Demo
 
-A production-grade starter template for building algorithmic trading bots in **Python** — designed for Forex, Crypto, and multi-asset execution.
+Architecture & UI demo for **WealthPole 2** — a grid / hedge–oriented risk engine and recovery system built for **MetaTrader 5 (MQL5)**.
 
-This project focuses on **clean architecture**, **risk-aware design**, and **extensibility**.  
-It is intentionally engineered like a professional trading system, *not* a “get rich quick" script.
-
----
-
-## 🔧 What You Can Build With This Starter
-
-- REST & WebSocket-based trading bots (Binance / OKX / others)  
-- Signal-driven or fully automated execution engines  
-- Modular **risk & position sizing systems**  
-- Multi-symbol, multi-timeframe workflows  
-- Backtesting and analytics pipelines  
-- Logging, monitoring, and structured configuration via YAML  
+This repository showcases **how the system is structured**, not a “plug-and-play” EA for instant profits.
 
 ---
 
-## 🧱 Architecture Overview
+## 🎯 What This Repo Is (and Is Not)
 
-The project is organized into clear, testable modules:
+✅ Focuses on:
 
-- `config/` — API keys, strategy config, risk profiles  
-- `core/` — trading engine & shared abstractions  
-- `strategies/` — plug-and-play strategy modules  
-- `exchanges/` — exchange connectors  
-- `utils/` — logging & common helpers  
+- Panel / dashboard architecture (MT5 chart UI)
+- Clean separation between **UI**, **inputs**, and **core logic**
+- Safer handling of grid / hedge parameters
+- Readable, maintainable MQL5 code structure
 
-This template is meant to be an **engineering-grade skeleton**:  
-strong enough to build real bots, lightweight enough to extend freely.
+❌ It is **not**:
+
+- A finished commercial EA
+- A guarantee of profitability
+- A full release of private production logic
+
+Think of it as a **blueprint** for how a complex risk engine can be organized in MQL5.
 
 ---
 
-## 📂 Current Folder Structure
+## 🧱 High-Level Architecture
 
-fintorai-python-trading-bot-starter/
-  config/
-    settings_example.yaml
-  src/
-    main.py
-    core/
-      __init__.py
-      engine.py
-    strategies/
-      __init__.py
-      sample_trend.py
-    exchanges/
-      __init__.py
-    utils/
-      __init__.py
-      logger.py
-  requirements.txt
-  LICENSE
+The WealthPole 2 architecture is split into a few clear layers:
+
+- **Main EA (.mq5)**  
+  Orchestrates everything: reads inputs, updates the panel, calls core logic.
+
+- **UI Layer (`WP2_UI.mqh` and related)**  
+  - Draws the main dashboard on the chart  
+  - Handles buttons / modes (Risk, Grid, Hedge, Filters, etc.)  
+  - Keeps panel state separate from trade logic
+
+- **Types & Config (`WP2_Types.mqh`, `WP2_Inputs.mqh`)**  
+  - Strongly-typed enums & structs  
+  - Central place for presets, modes, and risk profiles
+
+- **Core Logic (`WP2_Core.mqh` / similar)**  
+  - Hooks where grid / hedge / recovery logic is called  
+  - Designed so that different engines can be swapped in without rewriting the UI
+
+This separation lets you iterate on **risk & execution logic** without breaking the UI, و برعکس.
+
+---
+
+## 📂 Planned Folder Structure
+
+> Your local terminal path: `MQL5/` → here we mirror the same idea in Git.
+
+```text
+WealthPole-Architecture-Demo/
+  Experts/
+    WealthPole_2_Demo.mq5          # Main EA entrypoint (demo)
+  Include/
+    WP2_UI.mqh                      # Dashboard & panel components
+    WP2_Types.mqh                   # enums / structs / constants
+    WP2_Inputs.mqh                  # input mapping & presets
+    WP2_Core.mqh                    # core hooks for logic (stubs / demo)
+  presets/
+    WP2_Sample_Setfile.set          # example input preset (optional)
+  .gitignore
   README.md
+Some files may still be stubs or partial demos — the goal here is to present the architecture pattern, not your full private production code.
+
+🚀 How to Use This Demo
+
+Clone or download the repository.
+
+Copy files into your MetaTrader 5 data folder:
+
+MQL5/Experts/WealthPole-Architecture-Demo/...
+MQL5/Include/WealthPole-Architecture-Demo/...
 
 
+Open WealthPole_2_Demo.mq5 in MetaEditor.
 
+Compile and attach it to a chart (preferably a demo account).
 
----
+Interact with the panel:
 
-## 🚀 Quickstart
+Switch between modes (Risk / Grid / Hedge / Filters)
 
-1) Install dependencies  
-pip install -r requirements.txt
+Observe how the UI responds, how inputs are structured, and how the code is organized.
 
-2) Run the bot in paper mode  
-python src/main.py -c config/settings_example.yaml
+⚠️ Trading logic in this demo is intentionally limited / simplified.
+It is for architecture review and educational purposes, not live trading.
 
-Expected output:
-Settings loaded successfully.
-Bot: FintorAI Starter Bot
-Mode: paper
-[TODO] Plug in execution engine, exchanges, and strategy here.
+🧠 Design Principles
 
----
+WealthPole’s architecture follows a few core principles:
 
-## 📘 How It Works (High-Level)
+Separation of Concerns
+UI, inputs, and trade logic live in different modules.
 
-1. Configuration via YAML  
-config/settings_example.yaml  
-config/settings.yaml
+Preset-Driven Risk
+All sensitive parameters (lot sizing, steps, max grid, etc.) are pulled from structured presets instead of being scattered in code.
 
-2. Trading Engine  
-src/core/engine.py
+Extendable Core
+The Core layer is written so you can later plug in:
 
-3. Sample Strategy  
-src/strategies/sample_trend.py
+different grid profiles
 
-4. Logging  
-src/utils/logger.py
+dual-hedge engines
 
----
+ML-based guards or regime filters
 
-## 🧠 About the Author
+👤 About the Author
 
-Built and maintained by **Hossein Asgari**  
-Algorithmic Trading Architect & Founder of **Fintor AI**  
-LinkedIn: https://www.linkedin.com/in/hossein-asgari-3b652416a/  
-Website: https://fintorai.com  
+Built and maintained by Hossein Asgari
+Algorithmic Trading Architect & Founder of Fintor AI
 
----
+I design trading systems the way engineers build aircraft —
+modular, testable, and resilient.
 
-## ⚠️ Disclaimer
+LinkedIn: https://www.linkedin.com/in/hossein-asgari-3b652416a/
 
-This repository is for educational and engineering purposes only.  
-It does not provide financial advice or guarantee profitability.  
-Always test thoroughly before deploying to live markets.
+Website: https://fintorai.com
 
+⚠️ Disclaimer
+
+This repository is for educational and architectural demonstration purposes only.
+It does not provide financial advice, signals, or guaranteed profitability.
+Always test thoroughly on demo before using any trading logic in live environments.
