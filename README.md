@@ -1,6 +1,6 @@
 # WealthPole Architecture Demo
 
-Architecture & UI demo for **WealthPole 2** — a grid / hedge–oriented risk engine and recovery system built for **MetaTrader 5 (MQL5)**.
+Architecture & UI demo for **WealthPole** — a grid / hedge–oriented risk engine and recovery system built for **MetaTrader 5 (MQL5)**.
 
 This repository showcases **how the system is structured**, not a “plug-and-play” EA for instant profits.
 
@@ -27,7 +27,7 @@ Think of it as a **blueprint** for how a complex risk engine can be organized in
 
 ## 🧱 High-Level Architecture
 
-The WealthPole 2 architecture is split into a few clear layers:
+The WealthPole architecture is split into a few clear layers:
 
 - **Main EA (.mq5)**  
   Orchestrates everything: reads inputs, updates the panel, calls core logic.
@@ -80,7 +80,7 @@ MQL5/Experts/WealthPole-Architecture-Demo/...
 MQL5/Include/WealthPole-Architecture-Demo/...
 
 
-Open WealthPole_2_Demo.mq5 in MetaEditor.
+Open WealthPole_Demo.mq5 in MetaEditor.
 
 Compile and attach it to a chart (preferably a demo account).
 
