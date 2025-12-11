@@ -1,11 +1,11 @@
-WealthPole — Architecture Demo
+# WealthPole — Architecture Demo
 
 A clean, minimal public demonstration of how the WealthPole risk engine and dashboard architecture is structured in MetaTrader 5 (MQL5).
 
 This repository does not contain the full commercial EA.
 Instead, it provides a professional-level blueprint showing how a modern grid/hedge system can be organized, separated into layers, and made maintainable.
 
-🔍 What This Repo Is
+## 🔍 What This Repo Is
 
 This repository focuses on:
 
@@ -19,7 +19,8 @@ Readable, maintainable, modular MQL5 design
 
 It is meant to illustrate how WealthPole is built, not to publish the internal logic.
 
-🚫 What This Repo Is NOT
+
+## 🚫 What This Repo Is NOT
 
 Not a complete trading system
 
@@ -31,12 +32,13 @@ Not intended for live trading
 
 This is an architecture / educational demo only.
 
-🧱 High-Level Architecture (Conceptual Overview)
+
+## 🧱 High-Level Architecture (Conceptual Overview)
 
 WealthPole is designed with several clean layers.
 In this demo, the code is simplified, but the architecture remains visible:
 
-1. Main EA (.mq5)
+### 1. Main EA (.mq5)
 
 Coordinates execution:
 
@@ -49,7 +51,7 @@ calls internal logic layers
 Current demo file:
 MQL5/Experts/FintorAI_MQL5_Starter.mq5
 
-2. UI Layer (Dashboard & Controls)
+### 2. UI Layer (Dashboard & Controls)
 
 (Shown conceptually for now — future public-safe modules will be added)
 
@@ -61,7 +63,7 @@ Handles buttons (Grid, Hedge, Risk modes, Filters, etc.)
 
 Keeps UI state separate from execution logic
 
-3. Types & Config Layer
+### 3. Types & Config Layer
 
 Purpose:
 
@@ -73,7 +75,7 @@ safe parameter mapping
 
 (Currently represented in simplified form inside demo files.)
 
-4. Core Logic Layer
+### 4. Core Logic Layer
 
 Responsible for connecting events to logic hooks such as:
 
@@ -86,7 +88,8 @@ recovery sequences
 In this public demo, logic is intentionally minimal and shown only as structural placeholders inside:
 MQL5/Include/FintorAI/Core.mqh.
 
-📂 Current Folder Structure
+## 📂 Current Folder Structure
+
 ```text
 WealthPole-Architecture-Demo/
   MQL5/
@@ -104,7 +107,7 @@ WealthPole-Architecture-Demo/
 
 This layout mirrors how a real MT5 project is organized.
 
-📈 How to Use This Architecture Demo
+## 📈 How to Use This Architecture Demo
 
 Clone or download the repository
 
@@ -124,7 +127,7 @@ how execution calls are routed
 
 ⚠️ Trading logic is intentionally limited — this is for architectural review only.
 
-🧠 Design Principles Behind WealthPole
+## 🧠 Design Principles Behind WealthPole
 
 Separation of Concerns
 UI, inputs, and logic are modular and replaceable.
@@ -145,7 +148,7 @@ adaptive risk profiles
 
 without rewriting the EA from scratch.
 
-👤 About the Author
+## 👤 About the Author
 
 Built & maintained by Hossein Asgari
 Algorithmic Trading Architect — Founder @ Fintor AI
@@ -154,7 +157,7 @@ LinkedIn: https://www.linkedin.com/in/hossein-asgari-3b652416a/
 
 Website: https://fintorai.com
 
-⚠️ Disclaimer
+## ⚠️ Disclaimer
 
 This repository is for educational & architectural demonstration only.
 It does not include full risk logic or trading engines.
