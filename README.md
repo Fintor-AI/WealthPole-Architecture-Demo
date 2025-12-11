@@ -66,7 +66,9 @@ WealthPole-Architecture-Demo/
     WP2_Sample_Setfile.set          # example input preset (optional)
   .gitignore
   README.md
+```
 Some files may still be stubs or partial demos — the goal here is to present the architecture pattern, not your full private production code.
+
 
 🚀 How to Use This Demo
 
