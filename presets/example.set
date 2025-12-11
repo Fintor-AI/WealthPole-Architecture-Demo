@@ -1,1 +1,11 @@
-; Example preset for FintorAI MQL5 EA Starter
+; WealthPole Architecture Demo – Example Preset
+; This file is for demonstration only.
+; It shows how inputs are structured, not real trading parameters.
+
+[Inputs]
+; Start mode of the panel:
+; 0 = MODE_RISK
+; 1 = MODE_GRID
+; 2 = MODE_HEDGE
+; 3 = MODE_FILTERS
+InpStartMode=0
