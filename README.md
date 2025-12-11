@@ -1,124 +1,154 @@
-# WealthPole Architecture Demo
+WealthPole — Architecture Demo
 
-Architecture & UI demo for **WealthPole** — a grid / hedge–oriented risk engine and recovery system built for **MetaTrader 5 (MQL5)**.
+A clean, minimal public demonstration of how the WealthPole risk engine and dashboard architecture is structured in MetaTrader 5 (MQL5).
 
-This repository showcases **how the system is structured**, not a “plug-and-play” EA for instant profits.
+This repository does not contain the full commercial EA.
+Instead, it provides a professional-level blueprint showing how a modern grid/hedge system can be organized, separated into layers, and made maintainable.
 
----
+🔍 What This Repo Is
 
-## 🎯 What This Repo Is (and Is Not)
+This repository focuses on:
 
-✅ Focuses on:
+Clean and extensible architecture patterns
 
-- Panel / dashboard architecture (MT5 chart UI)
-- Clean separation between **UI**, **inputs**, and **core logic**
-- Safer handling of grid / hedge parameters
-- Readable, maintainable MQL5 code structure
+Separation of UI, inputs, and core logic
 
-❌ It is **not**:
+Demonstration of how a structured EA is organized
 
-- A finished commercial EA
-- A guarantee of profitability
-- A full release of private production logic
+Readable, maintainable, modular MQL5 design
 
-Think of it as a **blueprint** for how a complex risk engine can be organized in MQL5.
+It is meant to illustrate how WealthPole is built, not to publish the internal logic.
 
----
+🚫 What This Repo Is NOT
 
-## 🧱 High-Level Architecture
+Not a complete trading system
 
-The WealthPole architecture is split into a few clear layers:
+Not a guaranteed profitable EA
 
-- **Main EA (.mq5)**  
-  Orchestrates everything: reads inputs, updates the panel, calls core logic.
+Not a release of private or production code
 
-- **UI Layer (`WP2_UI.mqh` and related)**  
-  - Draws the main dashboard on the chart  
-  - Handles buttons / modes (Risk, Grid, Hedge, Filters, etc.)  
-  - Keeps panel state separate from trade logic
+Not intended for live trading
 
-- **Types & Config (`WP2_Types.mqh`, `WP2_Inputs.mqh`)**  
-  - Strongly-typed enums & structs  
-  - Central place for presets, modes, and risk profiles
+This is an architecture / educational demo only.
 
-- **Core Logic (`WP2_Core.mqh` / similar)**  
-  - Hooks where grid / hedge / recovery logic is called  
-  - Designed so that different engines can be swapped in without rewriting the UI
+🧱 High-Level Architecture (Conceptual Overview)
 
-This separation lets you iterate on **risk & execution logic** without breaking the UI, و برعکس.
+WealthPole is designed with several clean layers.
+In this demo, the code is simplified, but the architecture remains visible:
 
----
+1. Main EA (.mq5)
 
-## 📂 Planned Folder Structure
+Coordinates execution:
 
-> Your local terminal path: `MQL5/` → here we mirror the same idea in Git.
+reads user inputs
 
+updates UI
+
+calls internal logic layers
+
+Current demo file:
+MQL5/Experts/FintorAI_MQL5_Starter.mq5
+
+2. UI Layer (Dashboard & Controls)
+
+(Shown conceptually for now — future public-safe modules will be added)
+
+Responsibilities:
+
+Draws dashboard on chart
+
+Handles buttons (Grid, Hedge, Risk modes, Filters, etc.)
+
+Keeps UI state separate from execution logic
+
+3. Types & Config Layer
+
+Purpose:
+
+strongly-typed enums & structs
+
+organized presets and modes
+
+safe parameter mapping
+
+(Currently represented in simplified form inside demo files.)
+
+4. Core Logic Layer
+
+Responsible for connecting events to logic hooks such as:
+
+grid steps
+
+hedge behaviors
+
+recovery sequences
+
+In this public demo, logic is intentionally minimal and shown only as structural placeholders inside:
+MQL5/Include/FintorAI/Core.mqh.
+
+📂 Current Folder Structure
 ```text
 WealthPole-Architecture-Demo/
-  Experts/
-    WealthPole_2_Demo.mq5          # Main EA entrypoint (demo)
-  Include/
-    WP2_UI.mqh                      # Dashboard & panel components
-    WP2_Types.mqh                   # enums / structs / constants
-    WP2_Inputs.mqh                  # input mapping & presets
-    WP2_Core.mqh                    # core hooks for logic (stubs / demo)
-  presets/
-    WP2_Sample_Setfile.set          # example input preset (optional)
+  MQL5/
+    Experts/
+      FintorAI_MQL5_Starter.mq5     # Main EA entrypoint
+    Include/
+      FintorAI/
+        Core.mqh                    # Demo of structure + architecture hooks
+    presets/
+      example.set                   # Example inputs
   .gitignore
+  LICENSE
   README.md
 ```
-Some files may still be stubs or partial demos — the goal here is to present the architecture pattern, not your full private production code.
 
+This layout mirrors how a real MT5 project is organized.
 
-🚀 How to Use This Demo
+📈 How to Use This Architecture Demo
 
-Clone or download the repository.
+Clone or download the repository
 
-Copy files into your MetaTrader 5 data folder:
+Copy into MetaTrader 5 Data Folder structure
 
-MQL5/Experts/WealthPole-Architecture-Demo/...
-MQL5/Include/WealthPole-Architecture-Demo/...
+Open FintorAI_MQL5_Starter.mq5 in MetaEditor
 
+Compile and attach to any chart (demo recommended)
 
-Open WealthPole_Demo.mq5 in MetaEditor.
+Inspect:
 
-Compile and attach it to a chart (preferably a demo account).
+how UI hooks are structured
 
-Interact with the panel:
+how types / inputs are separated
 
-Switch between modes (Risk / Grid / Hedge / Filters)
+how execution calls are routed
 
-Observe how the UI responds, how inputs are structured, and how the code is organized.
+⚠️ Trading logic is intentionally limited — this is for architectural review only.
 
-⚠️ Trading logic in this demo is intentionally limited / simplified.
-It is for architecture review and educational purposes, not live trading.
-
-🧠 Design Principles
-
-WealthPole’s architecture follows a few core principles:
+🧠 Design Principles Behind WealthPole
 
 Separation of Concerns
-UI, inputs, and trade logic live in different modules.
+UI, inputs, and logic are modular and replaceable.
 
-Preset-Driven Risk
-All sensitive parameters (lot sizing, steps, max grid, etc.) are pulled from structured presets instead of being scattered in code.
+Preset-driven risk
+No magic numbers inside logic — everything comes from structured presets.
 
-Extendable Core
-The Core layer is written so you can later plug in:
+Engine Extensibility
+The architecture lets you later plug in:
 
-different grid profiles
+multiple grid engines
 
-dual-hedge engines
+hedge systems
 
-ML-based guards or regime filters
+ML-based guards
+
+adaptive risk profiles
+
+without rewriting the EA from scratch.
 
 👤 About the Author
 
-Built and maintained by Hossein Asgari
-Algorithmic Trading Architect & Founder of Fintor AI
-
-I design trading systems the way engineers build aircraft —
-modular, testable, and resilient.
+Built & maintained by Hossein Asgari
+Algorithmic Trading Architect — Founder @ Fintor AI
 
 LinkedIn: https://www.linkedin.com/in/hossein-asgari-3b652416a/
 
@@ -126,6 +156,6 @@ Website: https://fintorai.com
 
 ⚠️ Disclaimer
 
-This repository is for educational and architectural demonstration purposes only.
-It does not provide financial advice, signals, or guaranteed profitability.
-Always test thoroughly on demo before using any trading logic in live environments.
+This repository is for educational & architectural demonstration only.
+It does not include full risk logic or trading engines.
+Always test in demo environments.
