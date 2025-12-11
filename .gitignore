@@ -1,0 +1,40 @@
+# Compiled MQL binaries
+*.ex4
+*.ex5
+
+# DLLs and native libs
+*.dll
+*.so
+*.dylib
+
+# Logs and runtime files
+*.log
+logs/
+*.tmp
+
+# Platform-specific metadata
+*.ini
+*.dat
+*.hst
+*.mqt
+
+# Backtest and report outputs
+Backtest/
+Tester/
+Reports/
+
+# Archives
+*.zip
+*.rar
+*.7z
+
+# IDE / Editor configs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
